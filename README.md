@@ -13,3 +13,4 @@
     Alotrithms : Dynamic Causal Modeling (DCM), Granger Causality (GC), Partial Directed Coherence (PDC), Transfer Entropy (TE), etc.
     
     
+![image](https://user-images.githubusercontent.com/74770095/205509941-58224cc8-850f-463c-84ac-76a68361f046.png)
