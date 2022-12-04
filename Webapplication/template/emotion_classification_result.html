@@ -1,0 +1,79 @@
+<html>
+    <head>
+    </head>
+    <body>
+<style>
+ table{ border-collapse : collapse; font-size : 20pt;}  /*이중선 제거*/
+ th,td{
+      width: 200px;
+      height: 100px;
+      text-align: center;
+      border: 1px solid #000;
+      
+      vertical-align: top;	/* 위 */
+      vertical-align: bottom;   /* 아래 */
+      vertical-align: middle;   /* 가운데 */
+    }
+  </style>
+	<table>
+	<caption><font size="7">Subject - sxy's Inference Result </font></caption><br></br>
+	<colgroup>
+                <col style="background-color:#E5E4E2;">
+            </colgroup>
+        <tr>
+	<th scope = "col" colspan = "2" rowspan ="2">Confusion Matrix</th>
+            <th scope="col" colspan="3" style="background-color:#E5E4E2;">Prediction</th>
+	<th scope="col" rowspan="2" style="background-color:#E5E4E2;">Samples (개)</th>
+	<th scope="col" rowspan="2" style="background-color:#E5E4E2;">Accuracies (%)</th>
+            <!-- <th scope="col">조회수</th> : 밀려난 셀 제거-->
+        </tr>
+	<tr>
+	<th style="background-color:#FFCCCB;">Negative</th>
+	<th style="background-color:#FFD580;">Neutral</th>
+	<th style="background-color:Lightblue;">Positive</th>
+	</tr>
+	{% for item in items %}
+	{% if loop.index == 1 %}
+        <tr>
+            <th rowspan="3">Target</th>
+	<th style="background-color:#FFCCCB;">Negative</th>
+	{% for i in item %}
+            <td class="print">{{i}}</td>
+	{% endfor %}
+	<td>{{psum}} 개</td>
+	<td colspan = "2">{{pacc}} %</td>
+        </tr>
+	{% endif %}
+	{% if loop.index == 2 %}
+        <tr>
+            <!-- <td>2</td> -->
+            <th style="background-color:#FFD580;">Neutral</th>
+	{% for i in item %}
+            <td class="print">{{i}}</td>
+	{% endfor %}
+	<td>{{ntsum}} 개</td>
+	<td colspan = "2">{{ntacc}} %</td>
+        </tr>
+	{% endif %}
+	{% if loop.index == 3 %}
+        <tr>
+            <!-- <td>3</td> -->
+	<th style="background-color:Lightblue;">Positive</th>
+            {% for i in item %}
+            <td class="print">{{i}}</td>
+	{% endfor %}
+	<td>{{ngsum}} 개</td>
+	<td colspan = "2">{{ngacc}} %</td>
+	        </tr>
+	{% endif %}
+{% endfor %}
+	<tr>
+            <!-- <td>3</td> -->
+	<th scope="col" colspan="2">Total</th>
+	<td scope="col" colspan="3"> </td>
+	<td>{{totalsum}} 개</td>
+	<th colspan="2" style="background-color:#FFFF99;"><font size="6">{{avg}} %</font></th>
+        </tr>
+</table>
+    </body>
+</html>
